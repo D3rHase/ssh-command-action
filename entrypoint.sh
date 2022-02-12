@@ -14,4 +14,4 @@ Host server
 END
 
 # Execute the command
-ssh server $INPUT_COMMAND
+ssh server "${INPUT_COMMAND}"
