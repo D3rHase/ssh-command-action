@@ -3,7 +3,7 @@ Action to run a command on a remote server via ssh
 
 ## Usage
 ```yaml
-uses: D3rHase/ssh-command-action@latest
+uses: D3rHase/ssh-command-action@{version}
 with:
   HOST: ${{secrets.HOST}}                             # Remote server address / ip - Required: true
   PORT: ${{secrets.PORT}}                             # Remote server port -  Default: 22 - Required: false
