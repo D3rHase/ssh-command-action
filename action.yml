@@ -1,6 +1,6 @@
 # action.yml
 name: 'SSH Command'
-description: 'Run a command on a remote server via ssh.'
+description: 'Run a command on a remote server via ssh'
 
 inputs:
   HOST:
