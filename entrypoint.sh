@@ -4,7 +4,7 @@
 mkdir -p /root/.ssh/
 echo "${INPUT_PRIVATE_SSH_KEY}" > /root/.ssh/id_rsa.key
 chmod 600 /root/.ssh/id_rsa.key
-ssh-keyscan -H ${INPUT_HOST} >> /root/.ssh/known_hosts
+ssh-keyscan -p ${INPUT_PORT} -H ${INPUT_HOST} >> /root/.ssh/known_hosts
 cat >>/root/.ssh/config <<END
 Host server
     HostName ${INPUT_HOST}
