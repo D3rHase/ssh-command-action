@@ -1,17 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-# Prepare SSH connection
-mkdir -p /root/.ssh/
-echo "${INPUT_PRIVATE_SSH_KEY}" > /root/.ssh/id_rsa.key
-chmod 600 /root/.ssh/id_rsa.key
-ssh-keyscan -p ${INPUT_PORT} -H ${INPUT_HOST} >> /root/.ssh/known_hosts
-cat >>/root/.ssh/config <<END
-Host server
-    HostName ${INPUT_HOST}
-    User ${INPUT_USER}
-    Port ${INPUT_PORT}
-    IdentityFile /root/.ssh/id_rsa.key
-END
+mkdir /root/.ssh
+echo "$PRIVATE_KEY" > /root/.ssh/id_rsa # works even if key is not rsa kind
+chmod 0600 /root/.ssh/id_rsa
+
+if [ -z "${HOST_FINGERPRINT}" ]; then
+    echo ">> No public ssh fingerprint found, man-in-the-middle protection disabled!"
+    ssh-keyscan -H -p ${PORT} ${HOST} > /root/.ssh/known_hosts
+else
+    echo ">> Public ssh fingerprint found, man-in-the-middle protection enabled."
+    echo "${HOST_FINGERPRINT}" > /root/.ssh/known_hosts
+fi
 
 # Execute the command
-ssh server "${INPUT_COMMAND}"
+ssh -o StrictHostKeyChecking=yes "${USER}@${HOST}" -p ${PORT} ${COMMAND}
