@@ -2,20 +2,20 @@ name: "SSH Command"
 description: "Run a command on a remote server via ssh"
 
 inputs:
-  ssh_host:
+  host:
     description: "hostname / IP of the server"
     required: true
-  ssh_port:
+  port:
     description: "ssh port of the server"
     required: false
     default: "22"
-  ssh_user:
+  user:
     description: "user of the server"
     required: true
-  ssh_private_key:
+  private_key:
     description: "private ssh key registered on the server"
     required: true
-  ssh_host_fingerprint:
+  host_fingerprint:
     description: "Fingerprint of the server, preventing man-in-the-middle attacks"
     required: false
   command:
@@ -27,11 +27,11 @@ runs:
   using: "docker"
   image: "Dockerfile"
   env:
-    HOST: ${{ inputs.ssh_host }}
-    PORT: ${{ inputs.ssh_port }}
-    USER: ${{ inputs.ssh_user }}
-    PRIVATE_KEY: ${{ inputs.ssh_private_key }}
-    HOST_FINGERPRINT: ${{ inputs.ssh_host_fingerprint }}
+    HOST: ${{ inputs.host }}
+    PORT: ${{ inputs.port }}
+    USER: ${{ inputs.user }}
+    PRIVATE_KEY: ${{ inputs.private_key }}
+    HOST_FINGERPRINT: ${{ inputs.host_fingerprint }}
     COMMAND: ${{ inputs.command }}
 
 branding:
