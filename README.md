@@ -12,5 +12,5 @@ with:
   user: ${{secrets.USER}} # Remote server user - required
   private_key: ${{secrets.PRIVATE_KEY}} # Private ssh key registered on the remote server - required
   host_fingerprint: ${{secrets.HOST_FINGERPRINT}} # Public ssh key fingerprint, viewable via ssh-keyscan -H $HOST -p $PORT - optional
-  command: "echo 'hello world'" # Command to be executed - Default: echo 'hello world' - optional
+  command: echo 'hello world' # Command to be executed - Default: echo 'hello world' - optional
 ```
