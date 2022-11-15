@@ -1,36 +1,39 @@
-# action.yml
-name: 'SSH Command'
-description: 'Run a command on a remote server via ssh'
+name: "SSH Command"
+description: "Run a command on a remote server via ssh"
 
 inputs:
-  HOST:
-    description: 'hostname / IP of the server'
+  host:
+    description: "hostname / IP of the server"
     required: true
-  PORT:
-    description: 'ssh port of the server'
+  port:
+    description: "ssh port of the server"
     required: false
-    default: 22
-  USER:
-    description: 'user of the server'
+    default: "22"
+  user:
+    description: "user of the server"
     required: true
-  PRIVATE_SSH_KEY:
-    description: 'private ssh key registered on the server'
+  private_key:
+    description: "private ssh key registered on the server"
     required: true
-  COMMAND:
-    description: 'command to be executed'
+  host_fingerprint:
+    description: "Fingerprint of the server, preventing man-in-the-middle attacks"
     required: false
-    default: 'echo Hello World!'
+  command:
+    description: "command to be executed"
+    required: false
+    default: "echo 'Hello world'"
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.HOST }}
-    - ${{ inputs.PORT }}
-    - ${{ inputs.USER }}
-    - ${{ inputs.PRIVATE_SSH_KEY }}
-    - ${{ inputs.COMMAND }}
+  using: "docker"
+  image: "Dockerfile"
+  env:
+    HOST: ${{ inputs.host }}
+    PORT: ${{ inputs.port }}
+    USER: ${{ inputs.user }}
+    PRIVATE_KEY: ${{ inputs.private_key }}
+    HOST_FINGERPRINT: ${{ inputs.host_fingerprint }}
+    COMMAND: ${{ inputs.command }}
 
 branding:
-  icon: 'terminal'
-  color: 'yellow'
+  icon: "terminal"
+  color: "yellow"
