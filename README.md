@@ -143,7 +143,7 @@ To ensure you're connecting to the correct server and to prevent man-in-the-midd
 
 ## How to implement in your workflow
 
-To use this action, simply include it in your GitHub workflow YAML file as shown in the example below.
+This is an example of how you could use it in your GitHub workflow YAML file.
 
 ```yaml
 name: Example workflow file
@@ -178,7 +178,3 @@ jobs:
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
-Feel free to adapt any part of this template further based on your specific requirements.
