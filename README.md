@@ -73,7 +73,7 @@ You can use plain text instead of the secrets for these values directly in your 
 
 ## Secrets Configuration
 
-To keep your credentials secure, store sensitive information like `host`, `port`, `user`, and `private_key` as [GitHub Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets). You can add these secrets in your repository's settings under `Secrets and variables` > `Actions`.
+To keep your credentials secure, store sensitive information like `host`, `port`, `user`, and `private_key` as [GitHub Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets). You can add these secrets in your repository's settings under `Secrets and variables` > `Actions` > `Repository secrets`.
 
 ## Adding an SSH Key to Your Server
 
